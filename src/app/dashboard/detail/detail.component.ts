@@ -45,7 +45,6 @@ export class DetailComponent implements OnInit {
 
   async ngOnInit() {
     const hash = this.route.snapshot.paramMap.get('hash');
-    console.log('hash', hash);
     if (hash) {
       this.fileDetails.hash = hash;
       this.fileDetails = await this.getUploadedFile(hash);
@@ -75,6 +74,13 @@ export class DetailComponent implements OnInit {
 
   public goBack($event) {
     this.location.back();
+  }
+
+  public async verifyHash(hash) {
+    if (hash) {
+      this.verifyDetails.hash = hash;
+      this.verifyDetails = await this.getUploadedFile(hash);
+    }
   }
 
 }
