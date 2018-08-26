@@ -58,7 +58,11 @@ export class DashboardComponent implements OnInit {
   }
 
   updateMetaData(data) {
-    this.contractService.updateStorageKeyDetails(data);
+    this.contractService.updateStorageKeyDetails(data)
+    .then(async () => {
+      this.myUploads = await this.getUploadedFiles();
+      console.log('myUploads', this.myUploads);
+    });
   }
 
   public splitTags(tags): any {
