@@ -47,9 +47,13 @@ export class DetailComponent implements OnInit {
     const hash = this.route.snapshot.paramMap.get('hash');
     if (hash) {
       this.fileDetails.hash = hash;
-        setTimeout(async () => {
+      try {
+        this.fileDetails = await this.getUploadedFile(hash);
+      } catch {
+        setTimeout( async () => {
           this.fileDetails = await this.getUploadedFile(hash);
-        }, 1000);
+        }, 5000);
+      }
     }
 
   }
@@ -65,12 +69,16 @@ export class DetailComponent implements OnInit {
 
   public async getUploadedFile(fileHash: string): Promise<any> {
     return new Promise( async (resolve, reject) => {
-      const fileInfo = await this.contractService.getStorageKeyDetails(fileHash);
-      const fileStats = await this.ipfsService.getFileStats(fileHash);
-      fileInfo.size = fileStats.DataSize;
-      fileInfo.hash = fileStats.Hash;
-      console.log('stats', fileInfo);
-      resolve(fileInfo);
+      try {
+        const fileInfo = await this.contractService.getStorageKeyDetails(fileHash);
+        const fileStats = await this.ipfsService.getFileStats(fileHash);
+        fileInfo.size = fileStats.DataSize;
+        fileInfo.hash = fileStats.Hash;
+        console.log('stats', fileInfo);
+        resolve(fileInfo);
+      } catch (e) {
+        reject(e);
+      }
     });
   }
 
