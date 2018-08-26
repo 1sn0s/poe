@@ -60,7 +60,7 @@ export class DashboardComponent implements OnInit {
   updateMetaData(data) {
     this.contractService.updateStorageKeyDetails(data)
     .then(async () => {
-      this.myUploads = await this.getUploadedFiles();
+      this.ngOnInit();
       console.log('myUploads', this.myUploads);
     });
   }
