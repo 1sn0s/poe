@@ -28,7 +28,9 @@ export class DashboardComponent implements OnInit {
 
   async ngOnInit() {
     try {
-      this.myUploads = await this.getUploadedFiles();
+      setTimeout(async () => {
+        this.myUploads = await this.getUploadedFiles();
+      }, 1000);
       this.currentAccount = this.contractService.getDefaultAccount();
       this.updateCurrentAccount();
     } catch {

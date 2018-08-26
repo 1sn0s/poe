@@ -94,24 +94,28 @@ export class ContractService {
   public async getStorageKeyDetails(ipfsHash): Promise<any> {
     return new Promise( async (resolve, reject) => {
       const bytes32Hex = this.getBytes32HexFromIpfsHash(ipfsHash);
-      const proofDetails = await this._contract
-      .getProofDetails(bytes32Hex);
-      const tags = window.web3.utils.toUtf8(proofDetails[0]).split(' ');
-      const transactionId = proofDetails[1];
-      const fileTypeId = proofDetails[2];
-      const createdBlock = proofDetails[3];
-      const createdTime = ((await window.web3.eth.getBlock(createdBlock)).timestamp) * 1000;
-      const uploadedBy = proofDetails[4];
-      const proofInfo = {
-        hash : ipfsHash,
-        tags: tags,
-        transactionId: transactionId,
-        fileTypeId: fileTypeId,
-        createdBlock: createdBlock,
-        createdTime: new Date(createdTime),
-        uploadedBy: uploadedBy
-      };
-      resolve(proofInfo);
+      try {
+        const proofDetails = await this._contract
+        .getProofDetails(bytes32Hex);
+        const tags = window.web3.utils.toUtf8(proofDetails[0]).split(' ');
+        const transactionId = proofDetails[1];
+        const fileTypeId = proofDetails[2];
+        const createdBlock = proofDetails[3];
+        const createdTime = ((await window.web3.eth.getBlock(createdBlock)).timestamp) * 1000;
+        const uploadedBy = proofDetails[4];
+        const proofInfo = {
+          hash : ipfsHash,
+          tags: tags,
+          transactionId: transactionId,
+          fileTypeId: fileTypeId,
+          createdBlock: createdBlock,
+          createdTime: new Date(createdTime),
+          uploadedBy: uploadedBy
+        };
+        resolve(proofInfo);
+      } catch (e) {
+        throw e;
+      }
     });
   }
 

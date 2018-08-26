@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ContractService } from '../../services/contract-service.service';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '../../../../node_modules/@angular/router';
 import { FileUploadServiceService } from '../../file-upload-service.service';
-import { ContractService } from '../../services/contract-service.service';
 import { IpfsService } from '../../ipfs.service';
 
 @Component({
@@ -47,7 +47,9 @@ export class DetailComponent implements OnInit {
     const hash = this.route.snapshot.paramMap.get('hash');
     if (hash) {
       this.fileDetails.hash = hash;
-      this.fileDetails = await this.getUploadedFile(hash);
+        setTimeout(async () => {
+          this.fileDetails = await this.getUploadedFile(hash);
+        }, 1000);
     }
 
   }

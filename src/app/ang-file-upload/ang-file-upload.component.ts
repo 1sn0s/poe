@@ -20,7 +20,7 @@ export class AngFileUploadComponent implements OnInit {
         this.currentTab = _currentTab.data;
       });
     });
-    this.currentTab = this._appStateService.getTabs()[1];
+    this.currentTab = this._appStateService.getTabs()[0];
   }
 
 }
