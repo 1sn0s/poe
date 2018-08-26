@@ -7,42 +7,42 @@ The application uses ipfs for storage layer , ethereum for the trust layer and a
 ### Installation
 
 #### Code repo
-git clone Https://github.com/1sn0s/poe
+Get the code from [here](https://github.com/1sn0s/poe)
 
 #### node dependecies
-npm install
+`npm install`
 
 #### truffle cli
-sudo npm install -g truffle
+`sudo npm install -g truffle`
 
 #### ganache-cli for local test network
-sudo npm install -g ganache-cli
+`sudo npm install -g ganache-cli`
 
 In Ubuntu 16.04, if the ng command opens the terminal text editor, you can use the command by either :
 1 - setting the ng alias manually or
 2 - removing the existing ng editor package by "sudo apt purge ng-common ng-latin"
 
 #### install angular cli for running app locally
-sudo npm install -g @angular/cli
+`sudo npm install -g @angular/cli`
 
 #### Install zeppelin ethpm libraries using truffle
-truffle install zeppelin
+`truffle install zeppelin`
 
 (This adds the Zeppelin library to an installed_contracts directory in the root using EthPM, similar to node_modules using NPM)
 
 #### Run a local test network
-ganache-cli
+`ganache-cli`
 
 #### Run tests
-truffle test
+`truffle test`
 (Tests are located inside the test folder of the)
 
 #### Deploy contracts to local test net
-truffle compile
-truffle migrate
+`truffle compile`
+`truffle migrate`
 
 #### running the application locally
-ng serve -o
+`ng serve -o`
 This would start serving the application on localhost:4200
 
 You need have metamask enabled and unlocked in your browser and have it pointed to the corresponding network (localhost:8545 for ganache by default) to interact with the application.
