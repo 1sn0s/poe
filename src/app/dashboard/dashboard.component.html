@@ -1,0 +1,53 @@
+<div class="container-fluid dashboard p-0">
+  <div id="headerImage" class="row no-gutters">
+    <div class="col-12 header-image-container">
+      <div id="currentAccount" class="col-12 p-0 text-white">
+        <div class="col-12 p-0">
+          <span octicon="person" class="col d-none d-sm-inline"></span>
+          <span class="col p-0 align-middle">{{currentAccount}}</span>
+          <div class="col d-inline">
+            <span *ngIf="myUploads" class="badge badge-light">{{myUploads.length}} Files</span>
+          </div>
+          <div class="col-2 p-0 d-inline float-right">
+            <span octicon="check" class="col p-0 d-none d-sm-inline"></span>
+            <span class="badge verify" [routerLink]="['/verify']">Verify Files</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row files-list">
+  <div class="list-group col p-0">
+    <div *ngFor="let file of myUploads"
+     class="list-group-item list-group-item-action flex-column align-items-start">
+        <div class="d-flex justify-content-between">
+          <div class="col-10 user-file p-0" [routerLink]="['../file/', file.hash]">
+            <div class="col-1 float-left d-none d-md-block">
+              <!-- <span octicon="file-media" width="32"></span> -->
+              <img *ngIf="file.fileTypeId == 1" class="card-img-top" src="{{imagebaseUrl}}/{{file.name}}" alt="image">
+              <video *ngIf="file.fileTypeId == 2" src="{{imagebaseUrl}}/{{file.name}}" class="card-img-top" alt="video" controls>
+              </video>
+            </div>
+            <div class="col-lg-11 col-md-10 float-left">
+              <div class="col-12 text-truncate">
+                <span class="mb-1">{{file.name}}</span>
+              </div>
+              <div class="col-12">
+                  <span [hidden]="!tag" *ngFor="let tag of splitTags(file.tags); odd as odd; even as even" class="badge"
+                  [ngClass]="{'badge-dark':even, 'badge-light':odd}">
+                   <div class="col">
+                       {{tag}}
+                   </div>
+                 </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-2">
+            <!-- <small>3 days ago</small> -->
+            <app-metadata-popup class="float-right" [meta]="file" (metaEvent)="updateMetaData($event)"></app-metadata-popup>
+          </div>
+        </div>
+    </div>
+  </div>
+  </div>
+</div>

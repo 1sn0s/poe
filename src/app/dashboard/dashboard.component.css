@@ -1,0 +1,26 @@
+.dashboard {
+    height: 100%;
+}
+
+.files-list {
+    overflow-y: scroll;
+    height: 88%;
+}
+
+.header-image-container{
+    height : 12%;
+    background:url('../../assets/images/header.jpg') repeat-x;
+}
+.header-image {
+    height: inherit;
+    width: 100%;
+}
+.user-file {
+    cursor: pointer
+}
+.verify {
+    cursor: pointer;
+}
+.video {
+    height:60px;
+}

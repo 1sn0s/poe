@@ -1,0 +1,32 @@
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">File deatils</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="dateOfBirth">Tags <small>(Add space to separate tags)</small></label>
+        <div class="input-group">
+          <input type="text" id="txtTags" class="form-control"
+          [(ngModel)]="meta.tags" name="tag">
+        </div>
+        <!-- <label for="dateOfBirth">Description</label>
+        <div class="input-group">
+          <input type="text" id="txtDesc" class="form-control"
+          [(ngModel)]="meta.description" name="desc">
+        </div> -->
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c(meta)">Save</button>
+  </div>
+</ng-template>
+
+
+<button class="btn btn-sm btn-outline-secondary" (click)="open(content)">
+    <span octicon="tag" class="col p-0 d-none d-sm-inline"></span>
+</button>

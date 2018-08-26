@@ -1,0 +1,34 @@
+<div class="">
+  <div class="row justify-content-center mt-5" >
+    <div class="align-self-center" [ngClass]="{'loader': uploading}"></div>
+  </div>
+  <div id="dropZone"
+  class="file-drop-zone drop-zone-view"
+  (drop)="onDropFile($event);"
+  (dragover)="onDragOverFile($event);"
+  [hidden]="uploading">
+    <div class="container drop-zone-view">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-4 align-self-center text-center">
+          <span octicon="cloud-upload" width="103"></span>
+        </div>
+        <div class="w-100"></div>
+        <div class="col-4 align-self-center text-center">
+          <label>Drag file here to upload</label>
+        </div>
+        <div class="w-100"></div>
+        <div class="col-4 align-self-center text-center">
+          <label>OR</label>
+        </div>
+        <div class="w-100"></div>
+        <div class="col-3 align-self-center text-center">
+            <input type="file" id="uploadInput" class="d-none" (change)="selectFile($event)" 
+            accept="image/*,video/*" name="uploadInput" capture="environment">
+            <label for="uploadInput" class="btn btn-outline-dark">
+              <span>Browse Files</span>
+            </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

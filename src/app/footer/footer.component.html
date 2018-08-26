@@ -1,0 +1,11 @@
+
+    <div id="app_footer" class="container-fluid fixed-bottom p-0 footer btn-light">
+        <div class="row w-100 no-gutters footer">
+            <div *ngFor="let tab of tabs" class="col-6 footer active">
+                <button class="col-12 btn btn-light text-center footer" type="menu"
+                (click)="showTab($event, tab)">
+                    <span octicon="{{tab.icon.name}}" width="{{tab.icon.width}}"></span>
+                </button>
+            </div>            
+        </div>
+    </div>

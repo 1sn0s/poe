@@ -1,0 +1,112 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6" [hidden]="!fileDetails.hash">
+      <div class="card text-center">
+        <div class="card-header">
+            {{fileDetails.hash}}
+        </div>
+        <img *ngIf="fileDetails.fileTypeId == 1" class="card-img-top" src="{{imagebaseUrl}}/{{fileDetails.hash}}" alt="Card image cap">
+        <video *ngIf="fileDetails.fileTypeId == 2" src="{{imagebaseUrl}}/{{fileDetails.hash}}" class="card-img-top" alt="Card image cap" controls>
+        </video>
+        <div class="card-body">
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <div class="col-4 float-left">
+              <span class="badge badge-pill badge-success">CreatedTime</span>
+              <p>{{fileDetails.createdTime}}</p>
+            </div>
+            <div class="col-4 float-left">
+              <span class="badge badge-pill badge-success">CreatedBlock</span>
+              <p>{{fileDetails.createdBlock}}</p>
+            </div>
+            <div class="col-4 float-left">
+              <span class="badge badge-pill badge-success">Size (bytes)</span>
+              <p>{{fileDetails.size}}</p>
+            </div>
+          </li>
+          <li class="list-group-item">
+              <span class="badge badge-pill badge-success float-left">TransactionId</span>
+              <span>{{fileDetails.transactionId}}</span>
+          </li>
+          <li class="list-group-item">
+              <span class="badge badge-pill badge-success float-left">uploadedBy</span>
+              <p>{{fileDetails.uploadedBy}}</p>
+          </li>
+          <li class="list-group-item">
+              <span class="badge badge-pill badge-success float-left">Tags</span>
+              <span [hidden]="!tag" *ngFor="let tag of fileDetails.tags; odd as odd; even as even" class="badge"
+               [ngClass]="{'badge-dark':even, 'badge-light':odd}">
+                <div class="col">
+                    {{tag}}
+                </div>
+              </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-lg-6" [hidden]="!verifyDetails.hash">
+        <div class="card text-center">
+            <div class="card-header">
+                {{verifyDetails.hash}}
+            </div>
+            <img *ngIf="verifyDetails.fileTypeId == 1" class="card-img-top" src="{{imagebaseUrl}}/{{verifyDetails.hash}}" alt="Card image cap">
+            <video *ngIf="verifyDetails.fileTypeId == 2" src="{{imagebaseUrl}}/{{verifyDetails.hash}}" class="card-img-top" alt="Card image cap" controls>
+            </video>
+            <div class="card-body">
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <div class="col-4 float-left">
+                  <span class="badge badge-pill badge-success">CreatedTime</span>
+                  <p>{{verifyDetails.createdTime}}</p>
+                </div>
+                <div class="col-4 float-left">
+                  <span class="badge badge-pill badge-success">CreatedBlock</span>
+                  <p>{{verifyDetails.createdBlock}}</p>
+                </div>
+                <div class="col-4 float-left">
+                  <span class="badge badge-pill badge-success">Size (bytes)</span>
+                  <p>{{verifyDetails.size}}</p>
+                </div>
+              </li>
+              <li class="list-group-item">
+                  <span class="badge badge-pill badge-success">TransactionId</span>
+                  <span>{{verifyDetails.transactionId}}</span>
+              </li>
+              <li class="list-group-item">
+                  <span class="badge badge-pill badge-success">uploadedBy</span>
+                  <p>{{verifyDetails.uploadedBy}}</p>
+              </li>
+              <li class="list-group-item">
+                  <span class="badge badge-pill badge-success float-left">Tags</span>
+                  <span [hidden]="!tag" *ngFor="let tag of verifyDetails.tags; odd as odd; even as even" class="badge"
+                   [ngClass]="{'badge-dark':even, 'badge-light':odd}">
+                    <div class="col">
+                        {{tag}}
+                    </div>
+                  </span>
+                  
+              </li>
+            </ul>
+          </div>
+      </div>
+      </div>
+  <div class="row justify-content-around">
+      <div class="col align-items-center text-center mt-2">
+          <input type="button" id="back" class="d-none" (click)="goBack($event)">
+          <label for="back" class="btn btn-outline-primary">
+            Back
+          </label>
+        </div>
+      <div class="col align-items-center text-center mt-2">
+        <input type="file" id="uploadInput" class="d-none" (change)="selectFile($event)" 
+        accept="image/*" name="uploadInput" capture="environment">
+        <label for="uploadInput" class="btn btn-outline-primary">
+          <!-- <span octicon="cloud-upload"></span> -->
+          Upload & Verify
+        </label>
+      </div>
+    </div>
+
+</div>

@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row justify-content-around">
+    <div class="col offset-6">
+      <input type="file" id="uploadInput" class="d-none" (change)="selectFile($event)" 
+      accept="image/*" name="uploadInput" capture="environment">
+      <label for="uploadInput" class="btn btn-outline-primary">
+        <span octicon="cloud-upload"></span>
+      </label>
+    </div>
+  </div>  
+</div>
