@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AppstateServiceService } from '../services/appstate-service.service';
 
 @Component({
@@ -8,6 +8,8 @@ import { AppstateServiceService } from '../services/appstate-service.service';
 })
 export class FooterComponent implements OnInit {
 
+  @Input() activeTabId: Number;
+
   private tabs: any;
 
   constructor(private tabStateService: AppstateServiceService) { }
@@ -15,8 +17,9 @@ export class FooterComponent implements OnInit {
   ngOnInit() {
     this.tabs = this.tabStateService.getTabs();
   }
-
+  
   showTab(event, currentTab) {
+    console.log("active tab", this.activeTabId);
     this.tabStateService.tabChange({data : currentTab});
   }
 }
