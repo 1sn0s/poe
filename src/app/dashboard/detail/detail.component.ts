@@ -76,7 +76,7 @@ export class DetailComponent implements OnInit {
     this.location.back();
   }
 
-  public async verifyHash(hash) {
+  public async verifyHash($event, hash) {
     if (hash) {
       this.verifyDetails.hash = hash;
       this.verifyDetails = await this.getUploadedFile(hash);
