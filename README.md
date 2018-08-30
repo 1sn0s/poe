@@ -85,3 +85,8 @@ Any account with the hash of the file can also verify the details by using the h
 Verification can also be done, if the owner account of an uploaded file shares the link of the
 detailed view of the file (as mentioned previous
 
+
+
+### Other info
+A LibraryDemo sol file is created at the root folder.
+Other doc files are inside the doc folder
